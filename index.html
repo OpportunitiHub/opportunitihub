@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OpportunitiHub connects ambitious students with NGOs, startups, and real-world experiences." />
+  <meta name="keywords" content="internships, student opportunities, NGO volunteer, startup projects, Pakistan students, social impact">
+  <title>OpportunitiHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .info-icon {
+      display: inline-block;
+      position: relative;
+      margin-left: 8px;
+      cursor: pointer;
+      color: #999;
+      font-weight: bold;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 2px 6px;
+      background-color: #fff;
+      font-size: 12px;
+    }
+
+    .tooltip {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      position: absolute;
+      background-color: var(--tooltip-yellow);
+      color: #856404;
+      border: 1px solid #ffeeba;
+      padding: 10px;
+      border-radius: 6px;
+      top: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      font-size: 14px;
+      max-width: 280px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      text-align: center;
+      white-space: normal;
+    }
+
+    .info-icon:hover .tooltip,
+    .info-icon:focus .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .form-submit-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-submit-btn:hover {
+      opacity: 0.9;
+    }
+
+    .network-btn {
+      background-color: #0062cc;
+    }
+
+    .feedback-btn {
+      background-color: #17a2b8;
+    }
+
+    .donate-btn {
+      background-color: #28a745;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="#"><img src="images/logo.png" alt="OpportunitiHub Logo" class="logo" /></a>
+      <div>
+        <h1 class="site-title"><a href="#" style="color: white; text-decoration: none;">OpportunitiHub</a></h1>
+        <p class="tagline">Bridge to Real-World Experience</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mission">
+      <h2>Our Mission</h2>
+      <p>Connect real world experience through a dynamic community where students find internships, project collaborations, and hands-on learning by supporting startups, events, and NGOs.</p>
+    </section>
+
+    <section class="opportunity-section">
+      <h2>Explore Opportunities</h2>
+      <div class="button-group">
+        <button onclick="showOpportunities('societal')">Societal Welfare</button>
+        <button onclick="showOpportunities('internships')">Internships</button>
+        <button onclick="showOpportunities('workshops')">Workshops & Training</button>
+        <button onclick="showOpportunities('events')">Events</button>
+      </div>
+      <div id="opportunity-content"></div>
+    </section>
+
+    <section class="join">
+      <h2>Join Our Community</h2>
+      <a href="https://chat.whatsapp.com/KrMTMmR8HEQ8WXvMtD26oM" class="join-btn" target="_blank">Join on WhatsApp</a>
+      <div class="benefits">
+        <strong>Benefits for Students:</strong>
+        <ul>
+          <li>Gain practical experience beyond textbooks</li>
+          <li>Collaborate with real-world projects and organizations</li>
+          <li>Build connections and explore career opportunities</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="network-form">
+      <h2>Get Featured</h2>
+      <div class="form-highlight">
+        <p><strong>Want to get listed and connect with students?</strong><br> Fill out the form below to join our network and get featured!</p>
+      </div>
+      <form id="network-form" action="https://formspree.io/f/xnnvvqeo" method="POST">
+        <input type="text" name="name" placeholder="Your Name / Organization Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <select name="type" required>
+          <option value="">Select Type</option>
+          <option value="ngo">NGO</option>
+          <option value="startup">Startup</option>
+          <option value="event">Event Organizer</option>
+          <option value="other">Other</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your work / what you're looking for..." rows="5" required></textarea>
+        <button type="submit" class="form-submit-btn network-btn" aria-label="Submit Network Form">Submit</button>
+        <p id="network-success" style="display:none; color: green; text-align: center; margin-top: 1rem;">Thank you! We'll get back to you soon.</p>
+      </form>
+    </section>
+
+    <section class="suggestions">
+      <h2>Suggestions & Complaints</h2>
+      <div class="form-highlight">
+        <p><strong>Your thoughts matter.</strong><br> Help us improve by sharing your feedback or any concerns you may have.</p>
+      </div>
+      <form id="feedback-form" action="https://formspree.io/f/mwpbbpeo" method="POST">
+        <input type="text" name="user-name" placeholder="Your Name (optional)">
+        <input type="email" name="user-email" placeholder="Your Email (optional)">
+        <textarea name="feedback" placeholder="Write your suggestion or complaint here..." rows="5" required></textarea>
+        <button type="submit" class="form-submit-btn feedback-btn" aria-label="Send Feedback Form">Send Feedback</button>
+        <p id="feedback-success" style="display:none; color: green; text-align: center; margin-top: 1rem;">Thanks for your feedback!</p>
+      </form>
+    </section>
+
+    <section class="help-section">
+      <h2>Support Impactful Initiatives</h2>
+      <p>We dedicate <strong>30% of our revenue</strong> to support meaningful student-led and social good initiatives.</p>
+      <p>If you'd like to support our mission and help us grow, consider donating to OpportunitiHub.</p>
+      <form id="donation-form" method="POST">
+        <label for="amount">Enter Amount (PKR):
+          <span class="info-icon" tabindex="0">i
+            <span class="tooltip">
+              30% of your donation supports student-led and social good projects. The remaining 70% helps maintain our website, grow the network, and fairly pay developers and team members.
+            </span>
+          </span>
+        </label>
+        <input type="number" id="amount" name="amount" placeholder="e.g. 1000" required max="1000000" />
+        <button type="submit" class="form-submit-btn donate-btn" aria-label="Submit Donation Form">Help Us Grow</button>
+        <p id="donation-success" style="display:none; color: green; text-align: center; margin-top: 1rem;"> :) Thank you for supporting our mission! Your contribution will go a long way in empowering student-led initiatives.</p>
+        <p id="donation-failure" style="display:none; color: red; text-align: center; margin-top: 1rem;">Note: The payment gateway will be integrated soon — we apologize for the inconvenience. In the meantime, you can still donate directly via JazzCash at 0307-6119990.</p>
+        <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <img src="images/jazzcash.png" alt="JazzCash Logo for Donation" height="30">
+          <img src="images/easypaisa.png" alt="Easypaisa Logo for Donation" height="30">
+          <img src="images/visa.png" alt="Visa Logo for Donation" height="30">
+          <img src="images/mastercard.png" alt="Mastercard Logo for Donation" height="30">
+        </div>
+      </form>
+    </section>
+
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <a href="mailto:opportunitihub@gmail.com" target="_blank">opportunitihub@gmail.com</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy;2025 OpportunitiHub. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/opportunitihub/" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
