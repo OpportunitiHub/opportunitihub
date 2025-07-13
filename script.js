@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
       content: `<div class="opportunity-card">
                   <h3>GreenLeafSGD</h3>
                   <p>"🌱 <strong>Join GreenLeafSGD</strong> to plant trees, cool rural areas, and build greener, more resilient communities. Work with local youth and make a real impact.</p>
-                  <a href="https://chat.whatsapp.com/KrMTMmR8HEQ8WXvMtD26oM" class="apply-btn" target="_blank">Apply Now</a>
+                  <a href="https://chat.whatsapp.com/DQC8dDe7zMO2Guo0PgMrTj" class="apply-btn" target="_blank">Apply Now</a>
                 </div>
                 <div class="opportunity-card">
                   <h3>Social Impact.</h3>
